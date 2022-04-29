@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject cam;
     public CharacterController controller;
     public bool isJumping;
-    float myAng = 0.0f;
+    public float myAng = 0.0f;
     public bool canJump = true;
 
     private void Start()
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (myAng < 50)
+        if (myAng > 50)
             canJump = false;
         else
             canJump = true;
