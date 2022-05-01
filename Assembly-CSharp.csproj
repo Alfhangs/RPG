@@ -56,12 +56,14 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UserStats.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
-    <Compile Include="Assets\Scripts\UserStats.cs" />
     <Compile Include="Assets\Scripts\BasicStats.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\RespawnPoint.cs" />
+    <Compile Include="Assets\Scripts\RangeSpell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

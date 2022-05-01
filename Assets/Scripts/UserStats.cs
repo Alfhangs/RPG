@@ -53,13 +53,50 @@ public class UserStats : MonoBehaviour
 
     public float tickTime;
 
+    public GameObject rangeSpellPrefab;
+
+    //GUI Art
+    public Texture hpBarTexture;
+    public Texture manaBarTexture;
+    public Texture barsBackgroundTexture;
+
+    //USER GUI Bars Stats
+    public float userHpBarLenght;
+    public float percentOfUserHp;
+    public float userManaBarLenght;
+    public float percentOfUserMana;
+
     private void OnGUI()
     {
-        if (hoverOverActive)
-            GUI.Label(new Rect(Input.mousePosition.x - 100, Screen.height - Input.mousePosition.y, 100, 20), "" + hoverName);
+        //if (hoverOverActive)
+            //GUI.Label(new Rect(Input.mousePosition.x - 100, Screen.height - Input.mousePosition.y, 100, 20), "" + hoverName);
+
+        //HP and Mana Bars
+        GUI.DrawTexture(new Rect(20, 30, 120, 70), barsBackgroundTexture);
+        GUI.DrawTexture(new Rect(30, 40, userHpBarLenght, 20), hpBarTexture);
+        GUI.DrawTexture(new Rect(30, 65, userManaBarLenght, 20), manaBarTexture);
+        GUI.Label(new Rect(50, 40, 200, 20), "" + currentHP + "/" + maxHP);
+        GUI.Label(new Rect(50, 65, 200, 20), "" + currentMana + "/" + maxMana);
     }
     private void Update()
     {
+        //User bars calculated
+        if (currentHP >= maxHP)
+        {
+            percentOfUserHp = currentHP / maxHP;
+            userHpBarLenght = percentOfUserHp * 100;
+            percentOfUserMana = currentMana / maxMana;
+            userManaBarLenght = percentOfUserMana * 100;
+        }
+        //make sure mana and hp doesnt exceedd max values
+        if (currentHP > maxHP) 
+            currentHP = maxHP;
+        if (currentMana > maxMana) 
+            currentMana = maxMana;
+        if (currentHP < 0)
+            currentHP = 0;
+        if (currentMana < 0)
+            currentMana = 0;
         if (Input.GetMouseButtonDown(0))
         {
             SelectTarget(0);
@@ -68,7 +105,7 @@ public class UserStats : MonoBehaviour
         {
             SelectTarget(1);
         }
-        if (enemyStatsScript != null)
+        if (selectedUnit != null)
         {
             Vector3 toTarget = (selectedUnit.transform.position - transform.position).normalized;
             //Check if player is behind Enemy (Calculate dodge, parry, extra damage, etc)
@@ -149,7 +186,10 @@ public class UserStats : MonoBehaviour
         }
 
         //TODO: Ranged spell attack
-
+        if (Input.GetKeyDown("2"))
+        {
+            RangeSpell();
+        }
         //TODO: Tooltip popup display
         Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit2;
@@ -202,9 +242,14 @@ public class UserStats : MonoBehaviour
     {
         enemyStatsScript.RecieveDamage(10);
     }
-    void RangeAttack()
+    void RangeSpell()
     {
+        //Cast ranged spell
+        Vector3 spawnSpellLoc = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
+        GameObject clone;
+        clone = Instantiate(rangeSpellPrefab, spawnSpellLoc, Quaternion.identity);
+        selectedUnit.GetComponent<RangeSpell>().target = selectedUnit;
     }
     private void OnCollisionStay(Collision collision)
     {

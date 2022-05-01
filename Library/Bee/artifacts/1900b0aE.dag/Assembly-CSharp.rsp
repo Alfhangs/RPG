@@ -349,6 +349,8 @@
 "Assets/Scripts/CharacterSelect.cs"
 "Assets/Scripts/Enemies/EnemyStats.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/RangeSpell.cs"
+"Assets/Scripts/RespawnPoint.cs"
 "Assets/Scripts/UserStats.cs"
 -langversion:9.0
 
