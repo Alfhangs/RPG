@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Zone2
+  - Zone1
+  - PoisonArea
+  - Platform
   layers:
   - Default
   - TransparentFX

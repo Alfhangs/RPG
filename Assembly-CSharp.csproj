@@ -59,11 +59,11 @@
     <Compile Include="Assets\Scripts\UserStats.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\RespawnPoint.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
+    <Compile Include="Assets\Scripts\RangeSpell.cs" />
     <Compile Include="Assets\Scripts\BasicStats.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect.cs" />
-    <Compile Include="Assets\Scripts\RespawnPoint.cs" />
-    <Compile Include="Assets\Scripts\RangeSpell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
